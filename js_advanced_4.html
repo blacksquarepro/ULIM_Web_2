@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Advanced 4</title>
+
+</head>
+
+<body>
+
+    <select name="list1" id="list1">
+        <option value="JavaScript">JavaScript</option>
+        <option value="TypeScript">TypeScript</option>
+        <option value="CoffeeScript">CoffeeScript</option>
+        <option value="WebAssembly">WebAssembly</option>
+        <option value="ASP.NET">ASP.NET</option>
+    </select>
+
+    <select name="list2" id="list2">
+        <option value="Angular">Angular</option>
+        <option value="Vue">Vue</option>
+        <option value="React">React</option>
+        <option value="Svetle">Svetle</option>
+        <option value="Electron">Electron</option>
+    </select>
+
+    <script>
+        let select1 = document.getElementById("list1").options;
+        let select2 = document.getElementById("list2").options;
+        console.log(select1);
+        console.log(select2);
+    </script>
+
+</body>
+
+</html>

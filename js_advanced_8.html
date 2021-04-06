@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Advanced 8</title>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>Country</th>
+            <th>Date Updated</th>
+            <th>Population</th>
+        </tr>
+        <tr>
+            <td>France</td>
+            <td>2021-02-01</td>
+            <td><i>67400000</i></td>
+        </tr>
+        <tr>
+            <td>Spain</td>
+            <td><i>2020-12-30</i></td>
+            <td>47450759</td>
+        </tr>
+        <tr>
+            <td>Germany</td>
+            <td>2020-09-03</td>
+            <td>83190556</td>
+        </tr>
+        <tr>
+            <td>Netherlands</td>
+            <td>2020-12-31</td>
+            <td>17474677</td>
+        </tr>
+        <tr>
+            <td>Moldova</td>
+            <td>2021-02-01</td>
+            <td>2640438</td>
+        </tr>
+    </table>
+
+    <script>
+        const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+
+        const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+            v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+        )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+        document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+            const table = th.closest('table');
+            Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+                .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+                .forEach(tr => table.appendChild(tr));
+        })));
+    </script>
+</body>
+
+</html>

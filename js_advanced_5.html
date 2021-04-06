@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Advanced 5</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <input type="text" id="search" name="search" style="margin: 10px;width: 165px;"
+                onkeyup="filter(this.value)">
+        </div>
+        <div>
+            <select id="select" size="10" style="margin: 10px; width: 165px;height: 170px;" onchange="setInput()">
+                <option>Alfa</option>
+                <option>Bravo</option>
+                <option>Charlie</option>
+                <option>Delta</option>
+                <option>Echo</option>
+                <option>Foxtrot</option>
+                <option>Golf</option>
+                <option>Hotel</option>
+                <option>India</option>
+                <option>Juliett</option>
+                <option>Kilo</option>
+                <option>Lima</option>
+                <option>Mike</option>
+                <option>November</option>
+                <option>Oscar</option>
+                <option>Papa</option>
+                <option>Quebec</option>
+                <option>Romeo</option>
+                <option>Sierra</option>
+                <option>Tango</option>
+                <option>Uniform</option>
+                <option>Victor</option>
+                <option>Whiskey</option>
+                <option>X-ray</option>
+                <option>Yankee</option>
+                <option>Zulu</option>
+
+            </select>
+        </div>
+    </div>
+
+    <script>
+        function filter(keyword) {
+            var select = document.getElementById("select");
+            for (var i = 0; i < select.length; i++) {
+                var txt = select.options[i].text;
+                var include = txt.toLowerCase().startsWith(keyword.toLowerCase());
+                select.options[i].style.display = include ? 'list-item' : 'none';
+            }
+        }
+
+        function setInput() {
+            var sel = document.getElementById("select");
+            document.getElementById("search").value = sel.options[sel.selectedIndex].text;
+        }
+    </script>
+</body>
+
+</html>

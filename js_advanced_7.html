@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>   
+
+<select id="districts" onchange="ChangeDistrictVillages()"> 
+  <option value="">-- Selectati Raion --</option> 
+  <option value="Nisporeni">Nisporeni</option> 
+  <option value="Straseni">Straseni</option> 
+  <option value="Ialoveni">Ialoveni</option> 
+</select> 
+
+<select id="village"></select> 
+
+<script>
+let districtsAndVillages = {};
+districtsAndVillages['Nisporeni'] = ['Băcșeni', 'Bălănești', 'Bălăurești', 'Bărboieni', 'Boldurești', 'Bolțun', 'Brătuleni', 'Bursuc', 'Călimănești', 'Chilișoaia', 'Ciorești', 'Ciutești', 'Cîrnești', 'Cristești', 'Drojdieni', 'Găureni', 'Grozești', 'Heleșteni', 'Isăicani', 'Iurceni', 'Luminița', 'Marinici', 'Milești', 'Mîrzoaia', 'Nisporeni', 'Odaia', 'Odobești', 'Păruceni', 'Seliște', 'Selișteni', 'Soltănești', 'Șendreni', 'Șișcani', 'Valea Nîrnovei', 'Valea-Trestieni', 'Vărzărești', 'Vînători', 'Vulcănești', 'Zberoaia'];
+districtsAndVillages['Straseni'] = ['Bucovăț', 'Căpriana', 'Chirianca', 'Ciobanca', 'Codreanca', 'Cojușna', 'Dolna', 'Drăgușeni', 'Făgureni', 'Gălești', 'Găleștii', 'Ghelăuza', 'Gornoe', 'Greblești', 'Huzun', 'Lozova', 'Lupa', 'Mărtinești', 'Micăuți', 'Micleușeni', 'Negrești', 'Onești', 'Pănășești', 'Rassvet', 'Rădeni', 'Romănești', 'Recea', 'Roșcani', 'Saca', 'Scoreni', 'Sireți', 'Stejăreni', 'Strășeni', 'Tătărești', 'Țigănești', 'Voinova', 'Vorniceni', 'Zamciogi', 'Zubrești'];
+districtsAndVillages['Ialoveni'] = ['Alexandrovca', 'Bardar', 'Bălțați', 'Budăi', 'Cărbuna', 'Cigîrleni', 'Costești', 'Dănceni', 'Gangura', 'Găureni', 'Hansca', 'Horești', 'Homuteanovca', 'Horodca', 'Ialoveni', 'Malcoci', 'Mileștii', 'Mileștii', 'Misovca', 'Molești', 'Nimoreni', 'Piatra', 'Pojăreni', 'Puhoi', 'Răzeni', 'Ruseștii Noi', 'Ruseștii Vechi', 'Sociteni', 'Suruceni', 'Țipala', 'Ulmu', 'Văratic', 'Văsieni', 'Zîmbreni'];
+
+function ChangeDistrictVillages() {
+  let districtsList = document.getElementById("districts");
+  let village = document.getElementById("village");
+
+  let selDist = districtsList.options[districtsList.selectedIndex].value;
+  while (village.options.length) {
+    village.remove(0);
+  }
+
+  let locality = districtsAndVillages[selDist];
+  if (locality) {
+    let i;
+    for (i = 0; i < locality.length; i++) {
+      let car = new Option(locality[i], i);
+      village.options.add(car);
+    }
+  }
+} 
+</script>
+
+</body>
+</html>

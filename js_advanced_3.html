@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Advanced 3 - Calculator</title>
+    <script>
+        function calc() {
+            let arg1 = Number(document.getElementById('arg1').value);
+            let arg2 = Number(document.getElementById('arg2').value);
+            let ops = document.getElementById('operation').value;
+
+            if (ops == "+") {
+                let result = arg1 + arg2;
+                document.getElementById('result').innerHTML = result;
+                return result;
+            } else if (ops == "*") {
+                let result = arg1 * arg2;
+                document.getElementById('result').innerHTML = result;
+                return result;
+            } else if (ops == "-") {
+                let result = arg1 - arg2;
+                document.getElementById('result').innerHTML = result;
+                return result;
+            } else if (ops == "/") {
+                if (arg2 == 0) {
+                    let result = "Cannot divide by zero";
+                    document.getElementById('result').innerHTML = result;
+                } else {
+                    let result = arg1 / arg2;
+                    document.getElementById('result').innerHTML = result;
+                    return result;
+                }
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div>
+        <form action="submit" id="calcform">
+            <label for="arg1">Argument 1:</label><br>
+            <input type="number" id="arg1" name="arg1"><br>
+            <label for="arg2">Argument 2:</label><br>
+            <input type="number" id="arg2" name="arg2"><br>
+            <label for="operation">Arithmetic operation (arg 1 _ arg 2):</label>
+            <select id="operation" name="operation">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select><br />
+            <input type="button" onclick="calc()" value="Submit">
+        </form>
+    </div>
+    <div>
+        <p>The result is: <span id="result" style="font-weight: bold"></span></p>
+    </div>
+</body>
+
+</html>
